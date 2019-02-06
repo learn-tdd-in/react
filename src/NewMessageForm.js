@@ -7,6 +7,10 @@ export default class NewMessageForm extends Component {
     this.setState({ inputText: event.target.value });
   }
 
+  handleSend = () => {
+    this.setState({ inputText: '' });
+  }
+
   render() {
     const { inputText } = this.state;
 
@@ -20,6 +24,7 @@ export default class NewMessageForm extends Component {
         />
         <button
           data-testid="sendButton"
+          onClick={this.handleSend}
         >
           Send
         </button>
