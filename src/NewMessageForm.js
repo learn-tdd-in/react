@@ -8,6 +8,11 @@ export default class NewMessageForm extends Component {
           type="text"
           data-testid="messageText"
         />
+        <button
+          data-testid="sendButton"
+        >
+          Send
+        </button>
       </div>
     );
   }
