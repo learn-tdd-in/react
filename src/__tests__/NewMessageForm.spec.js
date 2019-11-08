@@ -8,8 +8,11 @@ describe('<NewMessageForm />', () => {
   afterEach(cleanup);
 
   describe('clicking the send button', () => {
+    let sendHandler;
+
     beforeEach(() => {
-      ({ getByTestId } = render(<NewMessageForm />));
+      sendHandler = jest.fn();
+      ({ getByTestId } = render(<NewMessageForm onSend={sendHandler} />));
 
       fireEvent.change(getByTestId('messageText'), {
         target: {
@@ -22,6 +25,10 @@ describe('<NewMessageForm />', () => {
 
     it('clears the text field', () => {
       expect(getByTestId('messageText').value).toEqual('');
+    });
+
+    it('calls the send handler', () => {
+      expect(sendHandler).toHaveBeenCalledWith('New message');
     });
   });
 });
