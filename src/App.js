@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import NewMessageForm from './NewMessageForm';
+import MessageList from './MessageList';
 
 export default function App() {
   const [messages, setMessages] = useState([]);
@@ -7,5 +8,10 @@ export default function App() {
     setMessages([newMessage, ...messages]);
   }
 
-  return <NewMessageForm onSend={handleSend} />;
+  return (
+    <>
+      <NewMessageForm onSend={handleSend} />
+      <MessageList data={messages} />
+    </>
+  );
 }
